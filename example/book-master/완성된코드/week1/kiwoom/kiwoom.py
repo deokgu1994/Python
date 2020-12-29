@@ -79,7 +79,7 @@ class Kiwoom(QAxWidget):
         QTest.qWait(5000)
 
         #실시간 수신 관련 함수
-        self.dynamicCall("SetRealReg(QString, QString, QString, QString)", self.screen_start_stop_real, '', self.realType.REALTYPE['장시작시간']['장운영구분'], "0")
+        self.dynamicCall("SetRealReg(QString, QString, QString, QString)", "1000", '', "215", "0")
 
         for code in self.portfolio_stock_dict.keys():
             screen_num = self.portfolio_stock_dict[code]['스크린번호']
@@ -106,7 +106,7 @@ class Kiwoom(QAxWidget):
 
     def real_event_slot(self):
         self.OnReceiveRealData.connect(self.realdata_slot)  # 실시간 이벤트 연결
-        self.OnReceiveChejanData.connect(self.chejan_slot) #종목 주문체결 관련한 이벤트
+        self.OnReceiveChejanData.connect(self.chejan_slot)  #종목 주문체결 관련한 이벤트
 
 
     def signal_login_commConnect(self):
