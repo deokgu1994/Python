@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 
 def x_to_arry(y, index):
+    print(y)
     y= y.split(' ')
     for _index, text in enumerate(y):
         if "x" in text:
@@ -14,10 +15,11 @@ def x_to_arry(y, index):
     
     
 if __name__ == "__main__":
-    df = pd.read_excel("test.xlsx", usecols=[1])
+    df = pd.read_excel("test.xlsx", usecols=[1]).dropna()
     df = df.to_dict()
     b = []
     index = 0
+    print()
     for _dict in df.values():
         for text in _dict.values():
             index += 1
