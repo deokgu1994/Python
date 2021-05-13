@@ -11,18 +11,25 @@
 
 # 1 이상이고 5000 보다 작은 모든 셀프 넘버들의 합을 구하라.
 
-def solution(maxnum):
-    safty_nums = [x for x in range(maxnum+1)]
-    for x in range(maxnum+1):
-        print(x)
-        jenerate_num = ((x%10000)//1000) + ((x%1000)//100) + ((x%100)//10) + (x%10) + x
-        if jenerate_num in safty_nums:
-            safty_nums.remove(jenerate_num)
-    anser = safty_nums
-    return  anser
+# def solution1(maxnum):
+#     safty_nums = [x for x in range(maxnum+1)]
+#     for x in range(maxnum+1):
+#         print(x)
+#         jenerate_num = ((x%10000)//1000) + ((x%1000)//100) + ((x%100)//10) + (x%10) + x
+#         if jenerate_num in safty_nums:
+#             safty_nums.remove(jenerate_num)
+#     anser = safty_nums
+#     return  anser
 
 # sum(set(range(1, 5000)) - {x + sum([int(a) for a in str(x)]) for x in range(1, 5000)})
 
+# def solution2(num):
+#     answer = [str(x).count("8") for x in range(num)]
+#     return sum(answer)
+
+#     str(list(range(1,num+1))).count('8')    
+    
 
 if __name__ == "__main__":
-    print(solution(5000))
+    # print(solution1(5000))
+    # print(solution2(10000))
