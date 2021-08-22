@@ -13,6 +13,7 @@
             "batch_size": 128,
             "shuffle": true,
             "validation_split": 0.1,
+            "training": false,
             "num_workers": 2
         }
     },

@@ -7,19 +7,24 @@ import model.metric as module_metric
 import model.model as module_arch
 from parse_config import ConfigParser
 
+import sys  # by mingu 
 
 def main(config):
     logger = config.get_logger('test')
 
     # setup data_loader instances
-    data_loader = getattr(module_data, config['data_loader']['type'])(
-        config['data_loader']['args']['data_dir'],
-        batch_size=512,
-        shuffle=False,
-        validation_split=0.0,
-        training=False,
-        num_workers=2
+    json_data_loader = config["data_loader"]
+    data_loader = getattr(module_data, json_data_loader['type'])(
+        json_data_loader['args']['data_dir'],
+        batch_size= json_data_loader['args'].get("batch_size", 518),
+        shuffle= json_data_loader['args'].get("shuffle", False),
+        validation_split= json_data_loader['args'].get("validation_split", 0.0),
+        training= json_data_loader['args'].get("training", False),
+        num_workers= json_data_loader['args'].get("num_workers", 2)
     )
+    
+    print(data_loader)
+    sys.exit()
 
     # build model architecture
     model = config.init_obj('arch', module_arch)
@@ -76,6 +81,5 @@ if __name__ == '__main__':
                       help='path to latest checkpoint (default: None)')
     args.add_argument('-d', '--device', default=None, type=str,
                       help='indices of GPUs to enable (default: all)')
-
     config = ConfigParser.from_args(args)
     main(config)
