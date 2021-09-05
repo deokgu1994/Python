@@ -12,7 +12,7 @@ class SimpleTest(unittest.TestCase):
     def testaddfail(self):
         self.assertEqual(add(-0.5, 1), 1.5)
     pass
-
+    
 if __name__ == "__main__":
     unittest.main()
     
